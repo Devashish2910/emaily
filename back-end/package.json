@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "Email feedback system back-end",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "engines": {
+    "node": "8.1.2",
+    "npm": "5.0.3"
   },
-  "author": "Devashish",
+  "scripts": {
+    "start": "node back-end/index.js"
+  },
+  "author": "Devashish G Patel",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
