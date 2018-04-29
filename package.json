@@ -8,7 +8,8 @@
     "npm": "5.0.3"
   },
   "scripts": {
-    "start": "node back-end/index.js"
+    "start": "node back-end/index.js",
+    "dev": "nodemon back-end/index.js"
   },
   "author": "Devashish G Patel",
   "license": "ISC",
