@@ -1,5 +1,6 @@
 // Import Controllers
 const oAuth = require('./../controllers/oAuth');
+const api = require('./../controllers/api');
 
 
 module.exports = app => {
@@ -9,12 +10,9 @@ module.exports = app => {
     });
 
     // Authentication
-    app.use('/auth', oAuth)
-    // Routes on drivers
-    //app.use('/d', DriverController);
+    app.use('/auth', oAuth);
 
-    // Get user details
-    app.get('/user', (req, res) => {
-        res.send(req.user)
-    });
+    // Common API related routes
+    app.use('/api', api);
+
 };
