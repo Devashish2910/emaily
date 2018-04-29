@@ -12,4 +12,9 @@ module.exports = app => {
     app.use('/auth', oAuth)
     // Routes on drivers
     //app.use('/d', DriverController);
+
+    // Get user details
+    app.get('/user', (req, res) => {
+        res.send(req.user)
+    });
 };

@@ -10,6 +10,7 @@ mongoose.Promise = global.Promise;
 const environment = process.env.NODE_ENV;
 
 if(environment === 'production') {
+    console.log(mLabConnection)
     mongoose.connect(mLabConnection);
 } else {
     mongoose.connect(localMongoConnection);
