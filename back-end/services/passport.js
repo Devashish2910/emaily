@@ -56,11 +56,10 @@ passport.use(
     new FacebookStrategy({
             clientID: keys.fbClientID,
             clientSecret: keys.fbClientSecret,
-            callbackURL: "/auth/facebook/callback",
+            callbackURL: "https://emaily-deva.herokuapp.com/auth/facebook/callback",
             proxy: true
         },
         (accessToken, refreshToken, profile, done) => {
-            alert(profile)
             User.findOne({userId: profile.id})
                 .then(existingUser => {
                     if (existingUser) {
