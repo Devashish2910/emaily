@@ -22,11 +22,11 @@ router.get('/google/callback', passport.authenticate('google'));
 router.get(
     '/facebook',
     passport.authenticate('facebook', {
-        scope: ['public_profile']
+        scope: ['public_profile', 'email']
     })
 );
 // Callback URL - /auth/facebook/callback
-router.get('/facebook/callback', passport.authenticate('facebook'));
+router.get('/facebook/callback', passport.authenticate('facebook', { failureRedirect : '/'}));
 
 
 // Export
