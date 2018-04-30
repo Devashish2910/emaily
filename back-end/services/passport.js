@@ -24,7 +24,8 @@ passport.use(
         {
             clientID: keys.googleClientID,
             clientSecret: keys.googleClientSecret,
-            callbackURL: "/auth/google/callback"
+            callbackURL: "/auth/google/callback",
+            proxy: true
         },
         (accessToken, refreshToken, profile, done) => {
             User.findOne({userId: profile.id})
@@ -55,7 +56,8 @@ passport.use(
     new FacebookStrategy({
             clientID: keys.fbClientID,
             clientSecret: keys.fbClientSecret,
-            callbackURL: "https://emaily-deva.herokuapp.com/auth/facebook/callback"
+            callbackURL: "/auth/facebook/callback",
+            proxy: true
         },
         (accessToken, refreshToken, profile, done) => {
             User.findOne({userId: profile.id})
