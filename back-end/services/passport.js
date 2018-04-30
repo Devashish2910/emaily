@@ -60,7 +60,7 @@ passport.use(
             proxy: true
         },
         (accessToken, refreshToken, profile, done) => {
-            console.log(profile)
+            console.log(profile);
             User.findOne({userId: profile.id})
                 .then(existingUser => {
                     if (existingUser) {
@@ -72,7 +72,7 @@ passport.use(
                             userId: profile.id,
                             first_name: profile.name.givenName,
                             last_name: profile.name.familyName,
-                            gender: profile.gender
+                            gender: profile
                         })
                             .save()
                             .then(new_user => {
