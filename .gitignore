@@ -1,4 +1,4 @@
 .idea/*
 node_modules/
 */.idea/*
-back-end/config/key.js
+back-end/config/dev.js

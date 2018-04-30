@@ -1,5 +1,5 @@
 // load key
-const {mLabConnection, localMongoConnection} = require('./../config/key');
+const {mongoURI, localMongoConnection} = require('./../config/key');
 // load mongoose
 const mongoose = require('mongoose');
 
@@ -10,8 +10,7 @@ mongoose.Promise = global.Promise;
 const environment = process.env.NODE_ENV;
 
 if(environment === 'production') {
-    console.log(mLabConnection)
-    mongoose.connect(mLabConnection);
+    mongoose.connect(mongoURI);
 } else {
     mongoose.connect(localMongoConnection);
 }
