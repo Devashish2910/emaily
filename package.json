@@ -9,11 +9,14 @@
   },
   "scripts": {
     "start": "node back-end/index.js",
-    "dev": "nodemon back-end/index.js"
+    "server": "nodemon back-end/index.js",
+    "client": "npm run start --prefix front-end",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Devashish G Patel",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^3.5.1",
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.3",
     "mongoose": "^5.0.16",
