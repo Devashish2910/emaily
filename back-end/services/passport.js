@@ -1,6 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const FacebookStrategy = require('passport-facebook').Strategy;
+const FacebookStrategy = require('passport-facebook');
 const keys = require("./../config/key");
 const mongoose = require("mongoose");
 const User = mongoose.model("users");
@@ -55,7 +55,7 @@ passport.use(
     new FacebookStrategy({
             clientID: keys.fbClientID,
             clientSecret: keys.fbClientSecret,
-            callbackURL: "/auth/facebook/callback"
+            callbackURL: "https://emaily-deva.herokuapp.com/auth/facebook/callback"
         },
         (accessToken, refreshToken, profile, done) => {
             console.log(profile)
