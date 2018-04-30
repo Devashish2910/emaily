@@ -60,6 +60,7 @@ passport.use(
             proxy: true
         },
         (accessToken, refreshToken, profile, done) => {
+            alert(profile)
             User.findOne({userId: profile.id})
                 .then(existingUser => {
                     if (existingUser) {
