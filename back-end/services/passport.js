@@ -55,7 +55,7 @@ passport.use(
     new FacebookStrategy({
             clientID: keys.fbClientID,
             clientSecret: keys.fbClientSecret,
-            callbackURL: "https://emaily-deva.herokuapp.com/auth/facebook/callback"
+            callbackURL: "/auth/facebook/callback"
         },
         (accessToken, refreshToken, profile, done) => {
             console.log(profile)
