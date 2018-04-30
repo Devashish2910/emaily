@@ -79,6 +79,5 @@ passport.use(
                             });
                     }
                 });
-            alert(profile);
         })
 );
