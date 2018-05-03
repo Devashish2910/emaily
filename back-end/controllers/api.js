@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const credits = require('./credits');
+const requireAuthentication = require('./../middlewares/requireAuthentication')
 
 // Logout- api/logout
-router.get('/logout', (req, res) => {
+router.get('/logout', requireAuthentication, (req, res) => {
     req.logout();
     res.redirect("/")
 });
@@ -11,5 +13,8 @@ router.get('/logout', (req, res) => {
 router.get('/user', (req, res) => {
     res.send(req.user)
 });
+
+// credits related routes- api/credits
+router.use('/credits', requireAuthentication, credits);
 
 module.exports = router;

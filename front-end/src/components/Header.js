@@ -27,11 +27,20 @@ class Header extends Component {
                     </li>
                 );
             default:
+                let user_name;
+                if (auth.first_name) {
+                    user_name = auth.first_name
+                } else {
+                    user_name = "User"
+                }
                 return [
-                    <li key="btn_payments">
-                        <Payments/>
+                    <li key="lbl_credits" style={{margin: '3px 13px', fontWeight: 'bold', fontSize: 'large'}}>
+                        Credits: {auth.credits}
                     </li>,
-                    <li key="btn_signout">
+                    <li key="btn_payments">
+                        <Payments />
+                    </li>,
+                    <li key="btn_sign_out">
                         <a href="/api/logout" className="waves-effect teal accent-4 waves-light btn">
                             Sign Out
                         </a>

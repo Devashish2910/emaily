@@ -15,6 +15,10 @@ const userSchema = new Schema({
     },
     gender: {
         type: String
+    },
+    credits: {
+        type: Number,
+        default: 5
     }
 });
 
