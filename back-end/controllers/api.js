@@ -6,12 +6,12 @@ const requireAuthentication = require('./../middlewares/requireAuthentication')
 // Logout- api/logout
 router.get('/logout', requireAuthentication, (req, res) => {
     req.logout();
-    res.redirect("/")
+    res.redirect("/");
 });
 
 // User Details- api/user
 router.get('/user', (req, res) => {
-    res.send(req.user)
+    res.send(req.user);
 });
 
 // credits related routes- api/credits

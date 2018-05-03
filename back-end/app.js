@@ -23,7 +23,7 @@ require('./routes/routes')(app);
 // Set up for front-end
 if (process.env.NODE_ENV === 'production') {
     // send back main js/css file
-    app.use(express.static('./../front-end/build'));
+    app.use(express.static('../front-end/build'));
 
     // return routes from index.html routes from react
     const path = require('path');

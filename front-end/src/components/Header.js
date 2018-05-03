@@ -27,12 +27,6 @@ class Header extends Component {
                     </li>
                 );
             default:
-                let user_name;
-                if (auth.first_name) {
-                    user_name = auth.first_name
-                } else {
-                    user_name = "User"
-                }
                 return [
                     <li key="lbl_credits" style={{margin: '3px 13px', fontWeight: 'bold', fontSize: 'large'}}>
                         Credits: {auth.credits}
