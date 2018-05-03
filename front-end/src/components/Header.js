@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import Payments from './Payments';
 
 class Header extends Component {
     renderContent(auth) {
@@ -26,11 +27,16 @@ class Header extends Component {
                     </li>
                 );
             default:
-                return (
-                    <a href="/api/logout" className="waves-effect teal accent-4 waves-light btn">
-                        Sign Out
-                    </a>
-                );
+                return [
+                    <li key="btn_payments">
+                        <Payments/>
+                    </li>,
+                    <li key="btn_signout">
+                        <a href="/api/logout" className="waves-effect teal accent-4 waves-light btn">
+                            Sign Out
+                        </a>
+                    </li>
+                    ]
         }
     }
 

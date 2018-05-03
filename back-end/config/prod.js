@@ -5,5 +5,7 @@ module.exports = {
     fbClientID: process.env.FB_CLIENT_ID,
     fbClientSecret: process.env.FB_CLIENT_SECRET,
     mongoURI: process.env.MONGO_URI,
-    cookieKey: process.env.COOKIE_KEY
+    cookieKey: process.env.COOKIE_KEY,
+    stripeClientID: precess.env.STRIPE_CLIENT_ID,
+    stripeClientSecret: process.env.STRIPE_CLIENT_SECRET
 };

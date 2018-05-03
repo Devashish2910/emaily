@@ -4,7 +4,7 @@ const router = express.Router();
 // Logout- api/logout
 router.get('/logout', (req, res) => {
     req.logout();
-    res.send("Logged Out!")
+    res.redirect("/")
 });
 
 // User Details- api/user
