@@ -21,17 +21,17 @@ app.use(passport.session());
 require('./routes/routes')(app);
 
 // Set up for front-end
-/*if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
     const path = require('path');
 
     // send back main js/css file
-    app.use(express.static(path.join(__dirname, '..front-end/build')));
+    app.use(express.static(path.join(__dirname, '../front-end/build')));
 
     // return routes from index.html routes from react
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, '../front-end', 'build', 'index.html'));
     });
-}*/
+}
 
 
 module.exports = app;
