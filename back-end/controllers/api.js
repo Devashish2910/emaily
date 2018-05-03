@@ -3,6 +3,7 @@ const router = express.Router();
 const credits = require('./credits');
 const requireAuthentication = require('./../middlewares/requireAuthentication')
 
+
 // Logout- api/logout
 router.get('/logout', requireAuthentication, (req, res) => {
     req.logout();
