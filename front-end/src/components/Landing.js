@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-//import git from './../img/git.png'
+import git from './../img/git.png'
 
 class Landing extends Component {
     render() {
