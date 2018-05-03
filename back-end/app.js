@@ -21,7 +21,7 @@ app.use(passport.session());
 require('./routes/routes')(app);
 
 // Set up for front-end
-if (process.env.NODE_ENV === 'production') {
+/*if (process.env.NODE_ENV === 'production') {
     const path = require('path');
 
     // send back main js/css file
@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'production') {
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, '../front-end', 'build', 'index.html'));
     });
-}
+}*/
 
 
 module.exports = app;
