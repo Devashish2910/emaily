@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 // set Promises because mongoose not support the promises
 mongoose.Promise = global.Promise;
 
-// set database according to the environment
+// set database according recipients the environment
 const environment = process.env.NODE_ENV;
 
 if(environment === 'production') {

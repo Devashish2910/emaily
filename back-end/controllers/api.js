@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const credits = require('./credits');
-const requireAuthentication = require('./../middlewares/requireAuthentication')
+const surveys = require('./surveys');
+const requireAuthentication = require('./../middlewares/requireAuthentication');
 
 
 // Logout- api/logout
@@ -17,5 +18,8 @@ router.get('/user', (req, res) => {
 
 // credits related routes- api/credits
 router.use('/credits', requireAuthentication, credits);
+
+// surveys related routes- api/surveys
+router.use('/surveys', requireAuthentication, surveys);
 
 module.exports = router;

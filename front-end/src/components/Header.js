@@ -48,7 +48,7 @@ class Header extends Component {
         return (
             <nav className="blue-grey darken-3">
                 <div className="nav-wrapper">
-                    <Link to={auth ? '/surveys' : '/'} className="left brand-logo"><i></i>Emaily</Link>
+                    <Link to={auth ? '/surveys/all' : '/'} className="left brand-logo"><i></i>Emaily</Link>
                     <ul id="nav-mobile" className="right">
                         {this.renderContent(auth)}
                     </ul>

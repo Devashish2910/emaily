@@ -19,7 +19,16 @@ const userSchema = new Schema({
     credits: {
         type: Number,
         default: 5
-    }
+    },
+    _surveys: [{
+        type: Schema.Types.ObjectId,
+        ref: 'surveys'
+    }]
 });
+
+userSchema.virtual('totalSurveys').get(function() {
+    return this._surveys.length;
+});
+
 
 const users = mongoose.model('users', userSchema);

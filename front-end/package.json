@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "proxy": {
-    "auth/google": {
+    "/auth/google": {
       "target": "http://localhost:3050"
     },
-    "api/*": {
+    "/api/*": {
       "target": "http://localhost:3050"
     }
   },

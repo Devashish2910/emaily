@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 // Import Strategy
-require("./../database/models/users");
 require("./../services/passport");
 const passport = require('passport');
 
