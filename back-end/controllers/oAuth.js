@@ -16,7 +16,7 @@ router.get(
 
 // Callback URL - /auth/google/callback
 router.get('/google/callback', passport.authenticate('google'), (req, res) => {
-    res.redirect('/surveys');
+    res.redirect('/surveys/all');
 });
 
 // facebook Authentication - /auth/facebook

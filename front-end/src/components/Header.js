@@ -37,6 +37,7 @@ class Header extends Component {
                     <li key="btn_sign_out">
                         <a href="/api/logout" className="waves-effect teal accent-4 waves-light btn">
                             Sign Out
+                            <i className="material-icons right">power_settings_new</i>
                         </a>
                     </li>
                     ]
