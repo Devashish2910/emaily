@@ -20,7 +20,7 @@ router.get('/all', async (req, res) => {
 
 // webhook for new survey- /api/surveys/webhooks
 router.post('/webhooks', (req, res) => {
-    const p = new Path('/api/surveys/reply/:surveyId/:choice');
+    const p = new Path('/reply/:surveyId/:choice');
 
      _.chain(req.body)
         .map((event) => {
