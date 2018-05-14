@@ -5,20 +5,60 @@ const Surveys = mongoose.model('surveys');
 const checkCredits = require('./../middlewares/checkCredits');
 const Mailer = require('./../services/Mailer');
 const surveyTemplate = require('./../services/emailTemplate/surveyTemplate');
+const _ = require('lodash');
+const Path = require('path-parser');
+const {URL} = require('url');
 
-// get all surveys
-router.get('/all', (req, res) => {
+// get all surveys- /api/surveys/all
+router.get('/all', async (req, res) => {
+    const user = req.user;
+    const surveys = await Surveys.find({_user: user.userId})
+        .select({recipients: false});
+
+    res.send(surveys);
 });
 
-// webhook for new survey
+// webhook for new survey- /api/surveys/webhooks
 router.post('/webhooks', (req, res) => {
+    const p = new Path('/api/surveys/reply/:surveyId/:choice');
+
+     _.chain(req.body)
+        .map((event) => {
+            const match = p.test(new URL(event.url).pathname);
+            if (match) {
+                return {
+                    email: event.email,
+                    surveyId: match.surveyId,
+                    choice: match.choice
+                }
+            }
+        })
+        .compact()
+        .uniqBy('email', 'surveyId')
+        .each(({email, surveyId, choice}) => {
+            Survey.updateOne(
+                {
+                    _id: surveyId,
+                    recipients: {
+                        $elemMatch: { email: email, responded: false }
+                    }
+                },
+                {
+                    $inc: { [choice]: 1 },
+                    $set: { 'recipients.$.responded': true },
+                    lastResponded: new Date()
+                }
+            ).exec();
+        })
+        .value();
 
 });
 
-// thanks feedback- /api/surveys/thanks
-router.get('/thanks', (req, res) => {
-    res.send({status: "success", data: "Thanks for Feedback!"});
-})
+// thanks feedback- /api/surveys/reply/:surveyId/:choice
+router.get('/reply/:surveyId/:choice', (req, res) => {
+    res.redirect('/surveys/thanks');
+    //res.send({status: "success", data: "Thanks for Feedback!"});
+});
 
 // create new survey- /api/surveys/new
 router.post('/new', checkCredits, async (req, res) => {
