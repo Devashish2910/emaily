@@ -6,7 +6,7 @@ const checkCredits = require('./../middlewares/checkCredits');
 const Mailer = require('./../services/Mailer');
 const surveyTemplate = require('./../services/emailTemplate/surveyTemplate');
 const _ = require('lodash');
-const Path = require('path-parser').default;
+const Path = require('path-parser');
 const { URL } = require('url');
 const requireAuthentication = require('./../middlewares/requireAuthentication');
 
