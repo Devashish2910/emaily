@@ -1,4 +1,4 @@
-## Emaily
+## Emaily -  A User Feedback Web Application
 
 I wanted to build something that covered a lot of what I know into one app.  Emaily has a lot of front-end and back-end features.  Emaily is a product I made that at it's heart is for a start up owner or project manager.  Let's say you are someone that has created and deployed an application or service.  Now maybe your users are making use of your application but you've noticed that recently your users have suddenly stopped using your service or have cut down considerably.
 
