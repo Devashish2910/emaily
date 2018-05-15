@@ -10,8 +10,8 @@ const Path = require('path-parser');
 const { URL } = require('url');
 const requireAuthentication = require('./../middlewares/requireAuthentication');
 
-// get all surveys- /api/surveys/all
-router.get('/all', requireAuthentication, async (req, res) => {
+// get all surveys- /api/surveys/
+router.get('/', requireAuthentication, async (req, res) => {
     const user = req.user;
     const surveys = await Surveys.find({_user: user.id})
         .select({recipients: false});
