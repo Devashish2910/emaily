@@ -31,9 +31,6 @@ Emaily collects feedback from your users by asking questions through a survey.  
   - User can see report of all survey responses
 
 
-
-  ![Alt text](photo/flow.jpg?raw=true "Title")
-
 > - Feel free to use this project and upgrade it.(Make it more AWESOME!)
-- Don't forget to give some credits to me! 😜
-- Suggestions and Questions are always welcomed, please e-mail me at devashish2910@gmail.com or create an issue
+> - Don't forget to give some credits to me! 😜
+> - Suggestions and Questions are always welcomed, please e-mail me at devashish2910@gmail.com or create an issue
