@@ -20,6 +20,6 @@ router.get('/user', (req, res) => {
 router.use('/credits', requireAuthentication, credits);
 
 // surveys related routes- api/surveys
-router.use('/surveys', requireAuthentication, surveys);
+router.use('/surveys', surveys);
 
 module.exports = router;

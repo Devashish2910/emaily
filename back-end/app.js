@@ -3,13 +3,16 @@ const passport = require('passport');
 const cookieSession = require('cookie-session');
 const keys = require("./config/key");
 const bodyParser = require("body-parser");
+const morgan = require("morgan");
 const app = express();
+
 // Connect recipients Database
 require('./database/connection');
 require("./database/models/Users");
 require("./database/models/Surveys");
 
-app.use(bodyParser.json())
+app.use(morgan('tiny'));
+app.use(bodyParser.json());
 // Enable Cookies
 app.use(
     cookieSession({

@@ -6,13 +6,14 @@ const checkCredits = require('./../middlewares/checkCredits');
 const Mailer = require('./../services/Mailer');
 const surveyTemplate = require('./../services/emailTemplate/surveyTemplate');
 const _ = require('lodash');
-const Path = require('path-parser');
-const {URL} = require('url');
+const Path = require('path-parser').default;
+const { URL } = require('url');
+const requireAuthentication = require('./../middlewares/requireAuthentication');
 
 // get all surveys- /api/surveys/all
-router.get('/all', async (req, res) => {
+router.get('/all', requireAuthentication, async (req, res) => {
     const user = req.user;
-    const surveys = await Surveys.find({_user: user.userId})
+    const surveys = await Surveys.find({_user: user.id})
         .select({recipients: false});
 
     res.send(surveys);
@@ -20,9 +21,9 @@ router.get('/all', async (req, res) => {
 
 // webhook for new survey- /api/surveys/webhooks
 router.post('/webhooks', (req, res) => {
-    const p = new Path('/reply/:surveyId/:choice');
 
-     _.chain(req.body)
+    const p = new Path('/api/surveys/reply/:surveyId/:choice');
+    _.chain(req.body)
         .map((event) => {
             const match = p.test(new URL(event.url).pathname);
             if (match) {
@@ -36,7 +37,8 @@ router.post('/webhooks', (req, res) => {
         .compact()
         .uniqBy('email', 'surveyId')
         .each(({email, surveyId, choice}) => {
-            Survey.updateOne(
+            console.log(`${email}, ${surveyId}, ${choice}`);
+            Surveys.updateOne(
                 {
                     _id: surveyId,
                     recipients: {
@@ -51,17 +53,17 @@ router.post('/webhooks', (req, res) => {
             ).exec();
         })
         .value();
-
+    res.send({});
 });
 
 // thanks feedback- /api/surveys/reply/:surveyId/:choice
-router.get('/reply/:surveyId/:choice', (req, res) => {
+router.get('/reply/:surveyId/:choice',(req, res) => {
     res.redirect('/surveys/thanks');
     //res.send({status: "success", data: "Thanks for Feedback!"});
 });
 
 // create new survey- /api/surveys/new
-router.post('/new', checkCredits, async (req, res) => {
+router.post('/new', requireAuthentication, checkCredits,async (req, res) => {
     const user = req.user;
     const {title, subject, description, recipients} = req.body;
 
